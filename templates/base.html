@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background: #333;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+    }
+
+    .nav-links a:hover {
+      background: #555;
+      border-radius: 5px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #444;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>ToyCraft Tales</strong></div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/story">Story</a>
+      <a href="/about">About</a>
+    </div>
+  </nav>
+
+  <main>
+    
+
+  
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    &copy; 2025 | ToyCraft Tales Project | All Rights Reserved
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
